@@ -52,7 +52,32 @@ export default function SignIn() {
     const router = useRouter()
   const classes = useStyles();
  const [css, setCss] = useState(classes)
-//  console.log("csss", css)
+ const [show, setShow] = useState(false);
+ const [credential,setCredential] = useState({
+     email:'',
+     password:''
+})
+const handleChange= (e)=>{
+    e.preventDefault()
+    setShow(false)
+setCredential({
+    ...credential,
+      [e.target.name]: e.target.value,
+      
+})
+
+}
+const submit=(e)=>{
+    e.preventDefault()
+    if((credential.email === 'india@jrms.com') || (credential.email === 'ksa@jrms.com') && (credential.password === 'superadmin@jmiit')){
+        localStorage.setItem('Credential',JSON.stringify(credential));
+        
+        router.push('/marketmanagment')
+    }else{
+        setShow(true)
+    }
+}
+//  console.log("credential", credential)
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -63,6 +88,9 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <p className={show ? "text-red-600" : "hidden"}>
+                Credential Not found.
+              </p>
         <form className={css.form} noValidate>
           <TextField
             variant="outlined"
@@ -74,8 +102,12 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
+            value={credential['email']}
           />
           <TextField
+          onChange={handleChange}
+          value={credential['password']}
             variant="outlined"
             margin="normal"
             required
@@ -96,6 +128,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={css.submit}
+            onClick={submit}
           >
             Sign In
           </Button>
