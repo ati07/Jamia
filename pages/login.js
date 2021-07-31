@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useRouter} from 'next/router'
+import Footer from '../components/Footer'
 // import Link from 'next/link'
 
 function Copyright() {
@@ -146,8 +147,9 @@ const submit=(e)=>{
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
+      <Box mt={18}>
+        {/* <Copyright /> */}
+        <Footer/>
       </Box>
     </Container>
   );
