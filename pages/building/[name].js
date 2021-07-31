@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Floors from '../../components/Floors'
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { useRouter } from "next/router";
+import LegalDoucuments from '../../components/LegalDocumentes';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,7 +69,7 @@ export default function SimpleTabs() {
       
     <div className={classes.root}>
       <div className="flex w-3/4 mt-5">
-      <KeyboardBackspaceIcon className='cursor-pointer' onClick={() => router.push('/marketmanagment')}/>
+      <KeyboardBackspaceIcon className='cursor-pointer' onClick={() => router.push('/marketmanagment')}/> Back
     </div>
       <div>
         <h1 className="mt-16 font-sans text-5xl font-semibold">
@@ -83,18 +84,23 @@ export default function SimpleTabs() {
       <AppBar position="static" >
         <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Floors & Rooms" {...a11yProps(0)} />
-          <Tab label="Legal Documents" {...a11yProps(1)} disabled/>
-          <Tab label="Expenses" {...a11yProps(2)} disabled />
+          <Tab label="Legal Documents" {...a11yProps(1)} />
+          <Tab label="Expenses" {...a11yProps(2)} />
+          <Tab label="Payments" {...a11yProps(3)} disabled/>
+
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Floors/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <LegalDoucuments/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      Here, you can see electricity and maintenance expenses.
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+      Here, you can see electricity and maintenance expenses.
       </TabPanel>
       </div>
     </div>
