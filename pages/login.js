@@ -105,6 +105,7 @@ const submit=(e)=>{
             autoFocus
             onChange={handleChange}
             value={credential['email']}
+            // value={'india@jrms.com'}
           />
           <TextField
           onChange={handleChange}
@@ -118,6 +119,7 @@ const submit=(e)=>{
             type="password"
             id="password"
             autoComplete="current-password"
+            // value={'superadmin@jmiit'}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

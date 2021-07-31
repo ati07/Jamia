@@ -1,127 +1,94 @@
-import { useRouter } from "next/router";
-import React from "react";
-import Image from "next/image";
-import { withStyles } from "@material-ui/core/styles";
-import MuiAccordion from "@material-ui/core/Accordion";
-import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
-import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Floors from '../components/Floors'
 
-const Accordion = withStyles({
-  root: {
-    border: "1px solid rgba(0, 0, 0, .125)",
-    boxShadow: "none",
-    "&:not(:last-child)": {
-      borderBottom: 0,
-    },
-    "&:before": {
-      display: "none",
-    },
-    "&$expanded": {
-      margin: "auto",
-    },
-  },
-  expanded: {},
-})(MuiAccordion);
-
-const AccordionSummary = withStyles({
-  root: {
-    backgroundColor: "rgba(0, 0, 0, .03)",
-    borderBottom: "1px solid rgba(0, 0, 0, .125)",
-    marginBottom: -1,
-    minHeight: 56,
-    "&$expanded": {
-      minHeight: 56,
-    },
-  },
-  content: {
-    "&$expanded": {
-      margin: "12px 0",
-    },
-  },
-  expanded: {},
-})(MuiAccordionSummary);
-
-const AccordionDetails = withStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
-}))(MuiAccordionDetails);
-function Floors() {
-  const router = useRouter();
-  const [expanded, setExpanded] = React.useState("panel1");
-
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div className="flex flex-col mt-16 justify-center items-center">
-      <div>
-        <h1 className="text-5xl font-semibold font-sans">
-          Old Salam Market Floors
-        </h1>
-      </div>
-      <div className="w-4/5 mt-5">
-        {[5, 4, 3, 2, 1, "Ground"].map((items, i) => (
-          <Accordion
-            key={i}
-            square
-            expanded={expanded === `panel${i + 1}`}
-            onChange={handleChange(`panel${i + 1}`)}
-          >
-            <AccordionSummary
-              aria-controls="panel1d-content"
-              id="panel1d-header"
-            >
-              <Typography>Floor {items}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography style={{dispaly:'flex', justifyContent:'center',alignItems:'center'}}>
-              <div className="flex flex-col justify-center items-center">
-                <div className="grid grid-cols-12 bg-white w-full gap-4 uppercase text-center text-lg font-semibold">
-                  {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((r,i)=>(
-                      <div key={i}
-                      onClick={() => router.push("/floors")}
-                      className="flex-col col-span-1 h-[50px] w-[50px] cursor-pointer hover:bg-[#556cd6] hover:text-white shadow-xl border-2 flex justify-center items-center"
-                    >
-                      <h1 className="text-lg font-semibold font-sans">{r}</h1>
-                    </div>
-                  ))}
-                </div>
-                </div>
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-
-        {/* <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion> */}
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
   );
 }
 
-export default Floors;
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    alignItems: 'center',
+  },
+}));
+
+export default function SimpleTabs() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div className={classes.root}>
+      <div>
+        <h1 className="mt-16 font-sans text-5xl font-semibold">
+          Old Salam Market
+        </h1>
+        <p className="mt-2 text-xs text-center opacity-70">
+              Jama Masjid, Beside Mukhtarkhana,
+               Ghorasahan Road, 845418
+            </p>
+      </div>
+      <div className="w-3/4 mt-5">
+      <AppBar position="static" >
+        <Tabs centered value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="Floors & Rooms" {...a11yProps(0)} />
+          <Tab label="Legal Documents" {...a11yProps(1)} disabled/>
+          <Tab label="Expenses" {...a11yProps(2)} disabled />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0}>
+        <Floors/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel>
+      </div>
+    </div>
+  );
+}

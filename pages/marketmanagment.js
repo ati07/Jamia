@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     paddingTop: theme.spacing(4),
-    // paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(0),
   },
   paper: {
     padding: theme.spacing(2),
@@ -210,7 +210,7 @@ export default function Dashboard() {
               </Paper>
             </Grid> */}
           </Grid>
-          <Box pt={8}>
+          <Box pt={10}>
             <Footer />
           </Box>
         </Container>
