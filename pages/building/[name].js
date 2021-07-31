@@ -6,7 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Floors from '../components/Floors'
+import Floors from '../../components/Floors'
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { useRouter } from "next/router";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SimpleTabs() {
+  const router = useRouter();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -61,7 +64,12 @@ export default function SimpleTabs() {
   };
 
   return (
+    <div>
+      
     <div className={classes.root}>
+      <div className="flex w-3/4 mt-5">
+      <KeyboardBackspaceIcon className='cursor-pointer' onClick={() => router.push('/marketmanagment')}/>
+    </div>
       <div>
         <h1 className="mt-16 font-sans text-5xl font-semibold">
           Old Salam Market
@@ -89,6 +97,7 @@ export default function SimpleTabs() {
         Item Three
       </TabPanel>
       </div>
+    </div>
     </div>
   );
 }
