@@ -35,6 +35,9 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import RoomIcon from '@material-ui/icons/Room';
+import PaymentIcon from '@material-ui/icons/Payment';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 
 function Copyright() {
   return (
@@ -202,11 +205,11 @@ export default function Dashboard() {
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <RoomIcon />
       </ListItemIcon>
       <ListItemText primary="Rooms" />
     </ListItem>
-    <ListItem button>
+    <ListItem button onClick={()=> router.push('/shopkeeper')}>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
@@ -214,13 +217,13 @@ export default function Dashboard() {
     </ListItem>
     <ListItem button onClick={()=> router.push('/payment')}>
       <ListItemIcon>
-        <BarChartIcon />
+        <PaymentIcon />
       </ListItemIcon>
       <ListItemText primary="Payments" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <LayersIcon />
+        <SupervisedUserCircleIcon />
       </ListItemIcon>
       <ListItemText primary="Staffs" />
     </ListItem>

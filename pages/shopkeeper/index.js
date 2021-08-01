@@ -119,11 +119,7 @@ export default function SimpleTabs() {
   // DropDown
   const [floor, setFloor] = React.useState("Floor");
   const [RN, setRN] = React.useState("Room Number");
-  const [building, setBuilding] = React.useState("");
 
-  const handleChangeDropBuilding = (event) => {
-    setBuilding(event.target.value);
-  };
   const handleChangeDropFloor = (event) => {
     setFloor(event.target.value);
   };
@@ -142,7 +138,7 @@ export default function SimpleTabs() {
           Back
         </div>
         <div>
-          <h1 className="mt-8 font-sans text-5xl font-semibold">Payments</h1>
+          <h1 className="mt-8 font-sans text-5xl font-semibold">Shop Keepers</h1>
         </div>
         <div className='flex'>
             <div className='flex flex-col mt-7 mr-4 '>
@@ -163,7 +159,7 @@ export default function SimpleTabs() {
               color="primary"
               onClick={handleClickOpen}
             >
-              Add More Payments
+              Add More Shop Keeper
             </Button>
             <div style={{ height: 400, width: "100%", marginTop: 10 }}>
               <div className="flex flex-col">
@@ -180,7 +176,7 @@ export default function SimpleTabs() {
                               "Market Name",
                               "Floor",
                               "Room Number",
-                              "Amount",
+                              "Mobile Number",
                               "Receipt",
                               "Status",
                               "Action",
@@ -210,7 +206,7 @@ export default function SimpleTabs() {
                                   31-07-2021
                                 </div>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4 whitespace-nowrap" onClick={()=>router.push(`/shopkeeper/${shopKeeper[i]}`)}>
                                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                   {shopKeeper[i]}
                                 </span>
@@ -232,7 +228,7 @@ export default function SimpleTabs() {
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="px-2 inline-flex text-gray-500 text-xs leading-5 font-semibold rounded-full ">
-                                  80000
+                                  756509118605
                                 </span>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">
@@ -349,28 +345,16 @@ export default function SimpleTabs() {
             >
               <DialogTitle id="form-dialog-title">Add Receipt Details</DialogTitle>
               <DialogContent>
-                <div className="grid grid-cols-12 gap-1 w-[100%]">
+                <div className="grid grid-cols-12 gap-1">
                   <div className="col-span-6">
-                  <FormControl className={classes.formControl}>
-                      <InputLabel id="demo-simple-select-label">
-                        Building
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={building}
-                        onChange={handleChangeDropBuilding}
-                        fullWidth
-                      >
-                        <MenuItem value={10}>Old Salam Market</MenuItem>
-                        <MenuItem value={20}>New Salam Market</MenuItem>
-                        <MenuItem value={30}>Jamia market</MenuItem>
-                        <MenuItem value={30}>Madni Chowk Market</MenuItem>
-                        <MenuItem value={30}>Motihari Jamia Building (Phase 1)</MenuItem>
-                        <MenuItem value={30}>Motihari Jamia Building (Phase 2)</MenuItem>
-
-                      </Select>
-                    </FormControl>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Building"
+                      type="text"
+                      fullWidth
+                    />
                   </div>
                   <div className="col-span-6">
                     <FormControl className={classes.formControl}>

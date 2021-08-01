@@ -1,10 +1,47 @@
 import { useRouter } from "next/router";
+import React,{ useState} from "react";
 import Image from "next/image";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Checkbox from '@material-ui/core/Checkbox';
+
 function Building() {
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+  const [open, setOpen] = React.useState(false);
+  const [image, setImage] = useState({
+    Img: "/RentAgreement/img.png",
+  });
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImage({ Img: reader.result });
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const router = useRouter();
   return (
     <div className="flex flex-col items-center justify-center">
       {/* <Image src='/Titleimg.png' width={600} height={100}/> */}
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      Add New Market
+        </Button>
       <div className="grid grid-cols-12 gap-12 pt-10 text-lg font-semibold text-center uppercase bg-white">
         <div
           onClick={() => router.push("/building/OldSalamMarket")}
@@ -64,13 +101,109 @@ function Building() {
             </p>
           </span>
         </div>
-        
-        {/* <div className='col-span-3 h-[10-[#fff]50px] cursor-not-allowed rounded-xl border-2 border-[#030903] flex justify-center items-center'>
-                <h1>Jamia Girls</h1>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Upload Documents</DialogTitle>
+          <DialogContent>
+            <div className='grid grid-cols-12 gap-6'>
+              <div className='col-span-6'><TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Market Name"
+              type="text"
+              fullWidth
+            /></div>
+              <div className='col-span-6'>
+              <TextField
+              
+              margin="dense"
+              id="name"
+              label="Address"
+              type="text"
+              fullWidth
+            />
+              </div>
+              <div className='col-span-6'><TextField
+              
+              margin="dense"
+              id="name"
+              label="Legal Document"
+              type="text"
+              fullWidth
+            /></div>
+              <div className='col-span-6'><TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Number of Floors"
+              type="text"
+              fullWidth
+            /></div>
+              <div className='col-span-6'><TextField
+              
+              margin="dense"
+              id="name"
+              label="Number of Rooms"
+              type="text"
+              fullWidth
+            /></div>
+              <div className='col-span-6'> 
+              Underconstruction: <Checkbox
+        checked={checked}
+        onChange={handleChange}
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
             </div>
-            <div className='col-span-3 h-[100px] w-[150px] cursor-not-allowed rounded-xl border-2 border-[#030903] flex justify-center items-center'>
-                <h1>Jamia Maktab</h30
-    p-5         </div> */}
+
+            </div>
+            
+            <TextField
+              margin="dense"
+              id="name"
+              label="Document Name"
+              type="text"
+              fullWidth
+            />
+            <div className="page">
+              <div className="container">
+                <div className="img-holder">
+                  <Image
+                    src={image.Img}
+                    width={250}
+                    height={200}
+                    alt=""
+                    id="img"
+                    className="img"
+                  />
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="image-upload"
+                  id="input"
+                  onChange={imageHandler}
+                />
+                {/* <div classNameNameNameName="label">
+            <label classNameNameNameName="image-upload" htmlFor="input">
+              <AddAPhotoIcon />
+            </label>
+          </div> */}
+              </div>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleClose} color="primary">
+              Upload
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </div>
   );
