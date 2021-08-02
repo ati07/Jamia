@@ -106,7 +106,7 @@ function Building() {
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Upload Documents</DialogTitle>
+          <DialogTitle id="form-dialog-title">Add Building Details </DialogTitle>
           <DialogContent>
             <div className='grid grid-cols-12 gap-6'>
               <div className='col-span-6'><TextField
@@ -136,7 +136,6 @@ function Building() {
               fullWidth
             /></div>
               <div className='col-span-6'><TextField
-              autoFocus
               margin="dense"
               id="name"
               label="Number of Floors"
@@ -187,11 +186,6 @@ function Building() {
                   id="input"
                   onChange={imageHandler}
                 />
-                {/* <div classNameNameNameName="label">
-            <label classNameNameNameName="image-upload" htmlFor="input">
-              <AddAPhotoIcon />
-            </label>
-          </div> */}
               </div>
             </div>
           </DialogContent>

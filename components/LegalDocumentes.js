@@ -9,7 +9,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { DataGrid } from "@material-ui/data-grid";
+// import { DataGrid } from "@material-ui/data-grid";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -66,38 +66,38 @@ function LegalDoucuments() {
         <div style={{ height: 400, width: "100%", marginTop: 10 }}>
           <div className="flex flex-col">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
                           #
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
                           Document Type
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
                           Uploaded By
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                         >
                           Updated On
                         </th>
                         <th
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase"
                         >
                           Action
                         </th>
@@ -108,7 +108,7 @@ function LegalDoucuments() {
                         <tr key={i}>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
-                              <div className="flex-shrink-0 h-10 w-10">
+                              <div className="flex-shrink-0 w-10 h-10">
                                 {i+1}
                               </div>
                             </div>
@@ -117,21 +117,21 @@ function LegalDoucuments() {
                             <div className="text-sm text-gray-900">{r}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                               Farhan
                             </span>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                             31-7-2021
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                            <span className="p-2 cursor-pointer text-gray-900">
-                              <VisibilityIcon className="font- text-gray-900" onClick={()=>handleClickOpen1(i)} />
+                          <td className="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
+                            <span className="p-2 text-gray-900 cursor-pointer">
+                              <VisibilityIcon className="text-gray-900 font-" onClick={()=>handleClickOpen1(i)} />
                             </span>
-                            <span className="p-2 cursor-pointer text-gray-900">
+                            <span className="p-2 text-gray-900 cursor-pointer">
                               <EditIcon />
                             </span>
-                            <span className="p-2 cursor-pointer text-gray-900">
+                            <span className="p-2 text-gray-900 cursor-pointer">
                               <DeleteIcon onClick={()=>handleClickDelete1(i)}/>
                             </span>
                           </td>
@@ -218,8 +218,8 @@ function LegalDoucuments() {
             <DialogContentText id="alert-dialog-slide-description">
               {dlt?
               <div className="flex flex-col">
-                <p className='text-md font-semibold'>Are you sure you want to delete</p>
-                <div className='flex justify-end items-center mt-5'>
+                <p className='font-semibold text-md'>Are you sure you want to delete</p>
+                <div className='flex items-center justify-end mt-5'>
                 <Button style={{color: 'red'}} onClick={handleClose1}>Yes</Button>
                 <Button style={{color: 'blue'}} onClick={handleClose1}>No</Button>
                 </div>

@@ -148,7 +148,7 @@ export default function SimpleTabs() {
           Back
         </div>
         <div>
-          <h1 className="mt-8 font-sans text-5xl font-semibold">Shop Keepers</h1>
+          <h1 className="mt-8 font-sans text-5xl font-semibold">Rooms</h1>
         </div>
         <div className="flex justify-center mt-10 items-center w-[90%]">
         <IconButton aria-label="filter list">
@@ -231,13 +231,13 @@ export default function SimpleTabs() {
                             {[
                               "#",
                               // "Date",
-                              "ShopKeeper",
-                              "Market Name",
-                              "Floor",
                               "Room Number",
-                              "Mobile Number",
+                              "Market Name",
+                            //   "Floor",
+                            //   "Room Number",
+                            //   "Mobile Number",
                               // "Receipt",
-                              // "Status",
+                              "Status",
                               "Action",
                             ].map((item, i) => (
                               <th
@@ -251,11 +251,11 @@ export default function SimpleTabs() {
                           </tr>
                         </thead>
                         <tbody className="text-center bg-white divide-y divide-gray-200">
-                          {["Approved", "Rejected", "Dispute"].map((r, i) => (
+                          {[1, 2, 3,4,5].map((r, i) => (
                             <tr key={i}>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 text-center whitespace-nowrap">
                                 <div className="flex items-center">
-                                  <div className="flex-shrink-0 w-10 h-10">
+                                  <div className="flex-shrink-0 w-10">
                                     {i + 1}
                                   </div>
                                 </div>
@@ -265,31 +265,31 @@ export default function SimpleTabs() {
                                   31-07-2021
                                 </div>
                               </td> */}
-                              <td className="px-6 py-4 whitespace-nowrap" onClick={()=>router.push(`/shopkeeper/${shopKeeper[i]}`)}>
+                              <td className="px-6 whitespace-nowrap" onClick={()=>router.push(`/rooms/${r}`)}>
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full cursor-pointer">
-                                  {shopKeeper[i]}
+                                  {r}
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 whitespace-nowrap">
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 text-gray-500 rounded-full">
                                   Old Salam Market
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              {/* <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 text-gray-500 rounded-full ">
                                   5
                                 </span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              </td> */}
+                              {/* <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 text-gray-500 rounded-full">
                                   15
                                 </span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              </td> */}
+                              {/* <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 text-gray-500 rounded-full ">
                                   756509118605
                                 </span>
-                              </td>
+                              </td> */}
                               {/* <td className="px-6 py-4 whitespace-nowrap">
                                 <span className="inline-flex px-2 text-xs font-semibold leading-5 rounded-full">
                                   <span className="p-2 text-gray-900 cursor-pointer">
@@ -301,17 +301,17 @@ export default function SimpleTabs() {
                                 </span>
                               </td> */}
 
-                              {/* <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                              <td className="px-6 text-sm text-gray-500 whitespace-nowrap">
                                 <span
                                   className={`${
-                                    r === "Approved"
+                                    r%2 === 0
                                       ? "bg-green-200 text-green-800"
-                                      : "hidden"
+                                      : "bg-red-200 text-red-800"
                                   } px-2 inline-flex text-xs leading-5 font-semibold uppercase rounded-full`}
                                 >
-                                  {r}
+                                  {r% 2 == 0 ?'Vacant':'Filled'}
                                 </span>
-                                <span
+                                {/* <span
                                   className={`${
                                     r === "Rejected"
                                       ? "bg-red-200 text-red-800"
@@ -319,8 +319,8 @@ export default function SimpleTabs() {
                                   } px-2 inline-flex text-xs leading-5 font-semibold uppercase rounded-full`}
                                 >
                                   {r}
-                                </span>
-                                <span
+                                </span> */}
+                                {/* <span
                                   className={`${
                                     r === "Dispute"
                                       ? "bg-yellow-200 text-yellow-800"
@@ -328,9 +328,9 @@ export default function SimpleTabs() {
                                   } px-2 inline-flex text-xs leading-5 font-semibold uppercase rounded-full`}
                                 >
                                   {r}
-                                </span>
+                                </span> */}
                                 <br />
-                                <span
+                                {/* <span
                                   className={`${
                                     r === "Approved"
                                       ? "whitespace-nowrap text-[10px] text-gray-500"
@@ -338,8 +338,8 @@ export default function SimpleTabs() {
                                   }`}
                                 >
                                   Approved By Farhan
-                                </span>
-                                <span
+                                </span> */}
+                                {/* <span
                                   className={`${
                                     r === "Rejected"
                                       ? "whitespace-nowrap text-[10px] text-gray-500"
@@ -347,9 +347,9 @@ export default function SimpleTabs() {
                                   }`}
                                 >
                                   Rejected By Farhan
-                                </span>
-                              </td> */}
-                              <td className="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
+                                </span> */}
+                              </td>
+                              <td className="px-6 text-sm font-medium text-center whitespace-nowrap">
                                 <span className="p-2 text-gray-900 cursor-pointer">
                                   <EditIcon />
                                 </span>

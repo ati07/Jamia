@@ -203,7 +203,7 @@ export default function Dashboard() {
       </ListItemIcon>
       <ListItemText primary="Building" />
     </ListItem>
-    <ListItem button>
+    <ListItem button onClick={()=> router.push('/rooms')}>
       <ListItemIcon>
         <RoomIcon />
       </ListItemIcon>
