@@ -67,7 +67,7 @@ export default function SimpleTabs() {
   };
   const { pid } = router.query
   console.log("pid", {pid})
-  console.log("route",router.query.name)
+  console.log("route",router.query.number)
   // SimpleTabs.getInitialProps = async () => {
   //   return {};
   // };
@@ -80,7 +80,7 @@ export default function SimpleTabs() {
     </div>
       <div>
         <h1 className="mt-16 font-sans text-5xl font-semibold">
-          Room {router.query.name}
+          Room {router.query.number}
         </h1>
         {/* <p className="mt-2 text-xs text-center opacity-70">
               Jama Masjid, Beside Mukhtarkhana,
