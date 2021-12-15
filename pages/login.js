@@ -55,8 +55,8 @@ export default function SignIn() {
  const [css, setCss] = useState(classes)
  const [show, setShow] = useState(false);
  const [credential,setCredential] = useState({
-     email:'',
-     password:''
+     email:'india@jrms.com',
+     password:'superadmin@jmiit'
 })
 const handleChange= (e)=>{
     e.preventDefault()
